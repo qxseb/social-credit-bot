@@ -8,6 +8,12 @@ export type ClientWithCollections = Client & {
 
 export type CreditSchemaProp = {
   userId?: String;
+  guildId: String;
   credit?: String;
   lastChecked?: String;
+};
+
+export type ConfigSchemaProp = {
+  guildId: String;
+  roleId: String;
 };

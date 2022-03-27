@@ -4,13 +4,15 @@ import mongoose from "mongoose";
 export const data = {
   name: "ready",
   once: true,
-  callback: (client: Client) => {
+  callback: async (client: Client) => {
     // handle discord
     console.log(`Successfully logged in as (${client.user?.tag})`);
-    client.user?.setActivity({
-      name: `${client.guilds.cache.size} guilds`,
-      type: "WATCHING",
-    });
+    setInterval(() => {
+      client.user?.setActivity({
+        name: `${client.guilds.cache.size} guilds`,
+        type: "WATCHING",
+      });
+    }, 60 * 1000);
 
     // handle mongodb
     async function handleMongoDB() {
@@ -22,6 +24,6 @@ export const data = {
         .catch((e) => console.log("[DB] Error", e));
     }
 
-    handleMongoDB();
+    await handleMongoDB();
   },
 };

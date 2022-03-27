@@ -11,9 +11,15 @@ export const data = {
 
     let { createdTimestamp: msgCreated } = message;
 
-    let creditProfile = await creditSchema.findOne({ userId: message.member!.id });
+    let creditProfile = await creditSchema.findOne({
+      userId: message.member!.id,
+      guildId: message.guild!.id,
+    });
     if (!creditProfile) {
-      creditProfile = new creditSchema({ userId: message.member!.id });
+      creditProfile = new creditSchema({
+        userId: message.member!.id,
+        guildId: message.guild!.id,
+      });
     }
 
     // mentions

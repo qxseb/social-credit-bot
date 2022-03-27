@@ -5,7 +5,7 @@ export const data = {
   config: {
     name: "credit",
     description: "Check your credit!",
-    usage: `${process.env.DEFAULT_PREFIX}credit`,
+    usage: `${process.env.DEFAULT_PREFIX}credit <user?>`,
     permissions: "Member",
     aliases: ["balance", "social-credit"],
   },
@@ -13,9 +13,15 @@ export const data = {
     let mentioned = message.mentions.members?.first();
 
     if (mentioned) {
-      let creditProfile = await creditSchema.findOne({ userId: mentioned.user.id });
+      let creditProfile = await creditSchema.findOne({
+        userId: mentioned.user.id,
+        guildId: message.guild!.id,
+      });
       if (!creditProfile) {
-        creditProfile = new creditSchema({ userId: mentioned.user.id });
+        creditProfile = new creditSchema({
+          userId: mentioned.user.id,
+          guildId: message.guild!.id,
+        });
       }
       let embedInfo = new MessageEmbed()
         .setAuthor({
@@ -28,7 +34,9 @@ export const data = {
           "https://imgs.search.brave.com/VTC7WQAVGKSXVwDRqV3ltEDFhpa1drBHRaxCjPNG8ds/rs:fit:817:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5B/bGp0Y2YxY0EyNlht/S1JjRklxYzNnSGFF/VCZwaWQ9QXBp"
         )
         .setDescription(
-          `**${mentioned.user.tag}** currently has ${creditProfile.credit} social credit.`
+          `**${mentioned.user.tag}** currently has ${parseInt(
+            creditProfile.credit! as string
+          ).toLocaleString()} social credit.`
         );
 
       message.reply({ embeds: [embedInfo] });
@@ -47,7 +55,11 @@ export const data = {
         .setThumbnail(
           "https://imgs.search.brave.com/VTC7WQAVGKSXVwDRqV3ltEDFhpa1drBHRaxCjPNG8ds/rs:fit:817:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5B/bGp0Y2YxY0EyNlht/S1JjRklxYzNnSGFF/VCZwaWQ9QXBp"
         )
-        .setDescription(`You currently have ${creditProfile.credit} social credit.`);
+        .setDescription(
+          `You currently have ${parseInt(
+            creditProfile.credit! as string
+          ).toLocaleString()} social credit.`
+        );
 
       message.reply({ embeds: [embedInfo] });
     }

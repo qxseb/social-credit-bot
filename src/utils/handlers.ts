@@ -49,15 +49,15 @@ export async function handleCommands() {
   }
 }
 
-export async function handleButtons() {
-  const buttonFolders = fs.readdirSync("./src/buttons");
-  for (const folder of buttonFolders) {
-    const buttonFiles = fs
-      .readdirSync(`./src/buttons/${folder}`)
-      .filter((file) => file.endsWith(".ts"));
-    for (const file of buttonFiles) {
-      const button = require(`../buttons/${folder}/${file}`);
-      client.buttonsCollection.set(button.data.name, button);
-    }
-  }
-}
+// export async function handleButtons() {
+//   const buttonFolders = fs.readdirSync("./src/buttons");
+//   for (const folder of buttonFolders) {
+//     const buttonFiles = fs
+//       .readdirSync(`./src/buttons/${folder}`)
+//       .filter((file) => file.endsWith(".ts"));
+//     for (const file of buttonFiles) {
+//       const button = require(`../buttons/${folder}/${file}`);
+//       client.buttonsCollection.set(button.data.name, button);
+//     }
+//   }
+// }
