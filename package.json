@@ -1,26 +1,21 @@
 {
-  "name": "social-credit-bot",
+  "name": "djs-bot-new",
   "version": "1.0.0",
-  "description": "social credit bot for friend @Dimsen",
-  "main": "./src/index.ts",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "dev": "nodemon ./src/index.ts"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/qxseb/social-credit-bot.git"
+    "dev": "nodemon src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/qxseb/social-credit-bot/issues"
-  },
-  "homepage": "https://github.com/qxseb/social-credit-bot#readme",
   "dependencies": {
     "discord.js": "^13.6.0",
     "dotenv": "^16.0.0",
-    "mongoose": "^6.2.8",
-    "ts-node": "^10.7.0"
+    "mongoose": "^6.2.7"
+  },
+  "devDependencies": {
+    "@types/mongoose": "^5.11.97"
   }
 }

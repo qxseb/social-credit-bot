@@ -1,3 +1,3 @@
-# social-credit-bot
+# yes
 
-social credit bot for friend @Dimsen
+pog
