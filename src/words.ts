@@ -1,8 +1,8 @@
 export const wordsArray = {
   good_words: [
     "nothing in 1989",
-    "no kids",
-    "one kid",
+    "have no kids",
+    "have one kid",
     "donated blood",
     "i love the government",
     "i wait for green light",
@@ -24,5 +24,6 @@ export const wordsArray = {
     "what grandparent",
     "fart",
     "you smell like fart",
+    "sold drugs",
   ],
 };
